@@ -1,7 +1,6 @@
 require "fakery/version"
-require "rails/railtie"
 require "rails/generators"
-require "fakery/generators/factory_girl"
+require "fakery/generators/fakery_generator"
 
 module Fakery
   # Your code goes here...

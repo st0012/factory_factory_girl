@@ -1,9 +1,17 @@
-require 'generators/factory_girl'
+require 'rails/generators'
 require 'factory_girl_rails'
 
-module FactoryGirl
+module Fakery
   module Generators
-    class ModelGenerator < Base
+    class FakeryGenerator < Rails::Generators::NamedBase #:nodoc:
+      def self.source_root
+        @_factory_girl_source_root ||= File.expand_path(File.join(File.dirname(__FILE__), 'factory_girl', generator_name, 'templates'))
+      end
+
+      def explicit_class_option
+        ", class: '#{class_name}'" unless class_name == singular_table_name.camelize
+      end
+
       argument(
         :attributes,
         type: :array,
@@ -94,6 +102,7 @@ RUBY
         config = FactoryGirl::Railtie.config
         config.respond_to?(:app_generators) ? config.app_generators : config.generators
       end
+
     end
   end
 end
