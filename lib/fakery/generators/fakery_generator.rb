@@ -4,6 +4,8 @@ require 'factory_girl_rails'
 module Fakery
   module Generators
     class FakeryGenerator < Rails::Generators::NamedBase #:nodoc:
+
+      SKIPED_COLUMN = %w{id created_at updated_at}
       def self.source_root
         @_factory_girl_source_root ||= File.expand_path(File.join(File.dirname(__FILE__), 'factory_girl', generator_name, 'templates'))
       end
@@ -12,12 +14,12 @@ module Fakery
         ", class: '#{class_name}'" unless class_name == singular_table_name.camelize
       end
 
-      argument(
-        :attributes,
-        type: :array,
-        default: [],
-        banner: "field:type field:type"
-      )
+#       argument(
+#         :attributes,
+#         type: :array,
+#         default: [],
+#         banner: "field:type field:type"
+#       )
 
       class_option(
         :dir,
@@ -77,9 +79,11 @@ RUBY
       end
 
       def factory_attributes
-        attributes.map do |attribute|
-          "#{attribute.name} #{attribute.default.inspect}"
-        end.join("\n")
+        class_name.constantize.columns.map do |attribute|
+          unless SKIPED_COLUMN.include? attribute.name
+            "#{attribute.name} #{attribute_default(attribute)}"
+          end
+        end.compact.join("\n")
       end
 
       def filename
@@ -103,6 +107,24 @@ RUBY
         config.respond_to?(:app_generators) ? config.app_generators : config.generators
       end
 
+      def attribute_default(attribute)
+        if attribute.default
+          attribute.default
+        else
+          case attribute.type.to_s
+          when "string"
+            "\"MyString\""
+          when "integer"
+            1
+          when "text"
+            "\"MyText\""
+          when "boolean"
+            true
+          when "datetime"
+            "\"#{Time.now}\""
+          end
+        end
+      end
     end
   end
 end
