@@ -33,4 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "generator_spec"
   spec.add_development_dependency "pry"
+  spec.add_development_dependency "activerecord"
+  spec.add_development_dependency "sqlite3"
 end

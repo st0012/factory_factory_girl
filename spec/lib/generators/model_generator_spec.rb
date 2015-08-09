@@ -5,7 +5,7 @@ ModelGenerator = Fakery::Generators::ModelGenerator
 describe ModelGenerator, type: :generator do
   destination File.expand_path("../../../../tmp", __FILE__)
   let(:generator) do
-    ModelGenerator.new(["test"], dir: destination_root + "/spec/factories")
+    ModelGenerator.new(["Post"], dir: destination_root + "/spec/factories")
   end
 
   before do
@@ -17,7 +17,7 @@ describe ModelGenerator, type: :generator do
     expect(destination_root).to have_structure do
       directory "spec" do
         directory "factories" do
-          file "tests.rb" do
+          file "posts.rb" do
             contains "FactoryGirl"
           end
         end
