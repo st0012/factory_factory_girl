@@ -14,14 +14,20 @@ describe ModelGenerator, type: :generator do
   end
 
   it "creates file in right directory" do
-    expect(destination_root).to have_structure do
+    expect(destination_root).to have_structure {
       directory "spec" do
         directory "factories" do
           file "posts.rb" do
-            contains "FactoryGirl"
+            contains "FactoryGirl.define"
+            contains "title \"MyString\""
+            contains "user_id 1"
+            contains "is_published true"
+            contains "view_count 1"
+            contains "description \"MyText\""
+            contains "content \"MyText\""
           end
         end
       end
-    end
+    }
   end
 end
