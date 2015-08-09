@@ -3,7 +3,7 @@ require 'factory_girl_rails'
 
 module Fakery
   module Generators
-    class FakeryGenerator < Rails::Generators::NamedBase #:nodoc:
+    class ModelGenerator < Rails::Generators::NamedBase #:nodoc:
 
       SKIPED_COLUMN = %w{id created_at updated_at}
       def self.source_root

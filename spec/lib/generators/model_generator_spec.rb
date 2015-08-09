@@ -1,11 +1,11 @@
 require "spec_helper"
 
-FakeryGenerator = Fakery::Generators::FakeryGenerator
+ModelGenerator = Fakery::Generators::ModelGenerator
 
-describe FakeryGenerator, type: :generator do
+describe ModelGenerator, type: :generator do
   destination File.expand_path("../../../../tmp", __FILE__)
   let(:generator) do
-    FakeryGenerator.new(["test"], dir: destination_root + "/spec/factories")
+    ModelGenerator.new(["test"], dir: destination_root + "/spec/factories")
   end
 
   before do
