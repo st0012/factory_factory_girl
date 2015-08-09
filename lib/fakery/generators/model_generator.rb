@@ -80,7 +80,7 @@ RUBY
       def factory_attributes
         class_name.constantize.columns.map do |attribute|
           unless SKIPED_COLUMN.include? attribute.name
-            "#{attribute.name} #{default_value(attribute)}"
+            "#{attribute.name} #{set_column(attribute)}"
           end
         end.compact.join("\n")
       end
@@ -106,6 +106,16 @@ RUBY
         config.respond_to?(:app_generators) ? config.app_generators : config.generators
       end
 
+      def set_column(attribute)
+        rules.each do |rule|
+          if attribute.name.match(rule[:rule])
+            rule[:result]
+            break
+          end
+        end
+        # default_value(attribute)
+      end
+
       def default_value(attribute)
         if attribute.default
           attribute.default
@@ -125,6 +135,10 @@ RUBY
             nil
           end
         end
+      end
+
+      def rules
+        @rules ||= Fakery.configuration.rules
       end
     end
   end
