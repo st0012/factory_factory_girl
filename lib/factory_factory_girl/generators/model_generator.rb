@@ -7,6 +7,8 @@ module FactoryFactoryGirl
     class ModelGenerator < FactoryGirl::Generators::ModelGenerator
       SKIPED_COLUMN = %w{id created_at updated_at}
 
+      private
+
       def factory_attributes
         class_name.constantize.columns.map do |attribute|
           unless SKIPED_COLUMN.include? attribute.name
@@ -51,7 +53,14 @@ module FactoryFactoryGirl
       end
 
       def rules
-        @rules ||= FactoryFactoryGirl.configuration.rules
+        if @rules
+          @rules
+        else
+          FactoryFactoryGirl.load_configuration(options[:dir])
+          FactoryFactoryGirl.configuration.rules
+        end
+      rescue NoMethodError
+        raise "You need to set generation rules"
       end
     end
   end

@@ -3,6 +3,16 @@ module FactoryFactoryGirl
     attr_accessor :configuration
   end
 
+  def self.load_configuration(path)
+    if path.match /spec\//
+      require "./spec/spec_helper"
+    else
+      require "./test/test_helper"
+    end
+  rescue LoadError
+    raise "Can not load configuration"
+  end
+
   def self.configure
     self.configuration ||= Configuration.new
     yield(configuration) if block_given?
