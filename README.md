@@ -2,9 +2,9 @@
 
 ## Mission
 
-FactoryGirl is a very useful gem, let us generates test data more efficiently. However, if you start new project very frequently, you will feel painful to write every project's factory, especially when most of them have some common ground.
+FactoryGirl is a very useful gem, which lets us generate test data more efficiently. However, if you start new projects very frequently, you will feel painful writing every project's factory, especially when most of them have some common attributes.
 
-For example, you use `FFaker::Job.title` to generate all your `name` or `title`'s attribute, and use `FFaker::Lorem.paragraph` to generate the `description` or `content`'s attribute. Then you just need to cope & paste in serveral factories, or even serveral project's factories.
+For example, you use `FFaker::Job.title` to generate all your `name` or `title`'s value, and use `FFaker::Lorem.paragraph` to generate the `description` or `content`'s value. Then you just need to cope & paste those methods in serveral columns, in serveral model's factories, or even in serveral project's factories.
 
 So the mission of this gem is helping people generate their factory more quikly, with some pre-defined rules like:
 
