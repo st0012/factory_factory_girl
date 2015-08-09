@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Stan Low"]
   spec.email         = ["stan001212@gmail.com"]
 
-  spec.summary       = %q{Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{A gem that helps you generate your factory files.}
+  spec.description   = %q{A gem that helps you generate your factory files.}
+  spec.homepage      = "https://github.com/st0012/factory_factory_girl"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
@@ -30,9 +30,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency('railties', '>= 3.0.0')
 
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rspec", ">= 3.0"
   spec.add_development_dependency "generator_spec"
   spec.add_development_dependency "pry"
-  spec.add_development_dependency "activerecord"
+  spec.add_development_dependency "activerecord", ">= 3.0"
   spec.add_development_dependency "sqlite3"
 end
