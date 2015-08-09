@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/st0012/factory_factory_girl.svg?branch=master)](https://travis-ci.org/st0012/factory_factory_girl)
+
 # FactoryFactoryGirl
 
 ## Mission
