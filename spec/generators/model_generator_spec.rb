@@ -8,7 +8,6 @@ describe ModelGenerator, type: :generator do
     ModelGenerator.new(["Post"], dir: destination_root + "/spec/factories")
   end
 
-
   describe "#create_fixture_file" do
     before do
       prepare_destination
