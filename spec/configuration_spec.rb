@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Fakery::Configuration do
+describe FactoryFactoryGirl::Configuration do
 
   describe "#match" do
     it "stores rules and results" do

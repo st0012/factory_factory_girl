@@ -1,4 +1,4 @@
-module Fakery
+module FactoryFactoryGirl
   class << self
     attr_accessor :configuration
   end

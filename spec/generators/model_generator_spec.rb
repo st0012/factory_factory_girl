@@ -1,6 +1,6 @@
 require "spec_helper"
 
-ModelGenerator = Fakery::Generators::ModelGenerator
+ModelGenerator = FactoryFactoryGirl::Generators::ModelGenerator
 
 describe ModelGenerator, type: :generator do
   destination File.expand_path("../../../../tmp", __FILE__)
@@ -10,7 +10,7 @@ describe ModelGenerator, type: :generator do
   end
 
   before do
-    Fakery.configure {}
+    FactoryFactoryGirl.configure {}
   end
 
   describe "#create_fixture_file" do
@@ -40,7 +40,7 @@ describe ModelGenerator, type: :generator do
 
     describe "generates factory with configuration" do
       before do
-        Fakery.configure do |f|
+        FactoryFactoryGirl.configure do |f|
           f.match(/title/, value: "This is title")
           f.match(/content/, function: "[a..z].sample")
         end

@@ -1,13 +1,13 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'fakery/version'
+require 'factory_factory_girl/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "fakery"
-  spec.version       = Fakery::VERSION
+  spec.name          = "factory_factory_girl"
+  spec.version       = FactoryFactoryGirl::VERSION
   spec.authors       = ["Stan Low"]
-  spec.email         = ["a22301613@yahoo.com.tw"]
+  spec.email         = ["stan001212@gmail.com"]
 
   spec.summary       = %q{Write a short summary, because Rubygems requires one.}
   spec.description   = %q{Write a longer description or delete this line.}
@@ -15,11 +15,11 @@ Gem::Specification.new do |spec|
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-  end
+  # if spec.respond_to?(:metadata)
+  #   spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+  # else
+  #   raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
+  # end
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"

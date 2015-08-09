@@ -1,22 +1,16 @@
-# Fakery
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/fakery`. To experiment with that code, run `bin/console` for an interactive prompt.
+# FactoryFactoryGirl
 
 ## Mission
 
-The mission of this gem is helping people generate their factory very quikly.
+The mission of this gem is helping people generate their factory more quikly.
 
-## Todo
-
-- From schema to factory
-- Use custom configuration to set column
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'fakery'
+gem 'factory_factory_girl'
 ```
 
 And then execute:
@@ -25,7 +19,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install fakery
+    $ gem install factory_factory_girl
 
 ## Usage
 
@@ -39,5 +33,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/fakery.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/factory_factory_girl.
 
