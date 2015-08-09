@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'fakery'
+require "factory_factory_girl"
 require "generator_spec"
 require "pry"
 require "active_record"
@@ -8,7 +8,7 @@ ActiveRecord::Base.default_timezone = "Taipei"
 ActiveRecord::Base.time_zone_aware_attributes = true
 
 # migrations
-ActiveRecord::Base.establish_connection adapter: "sqlite3", database: "tmp/:fakery:"
+ActiveRecord::Base.establish_connection adapter: "sqlite3", database: "tmp/:factory_factory_girl:"
 
 ActiveRecord::Base.raise_in_transactional_callbacks = true if ActiveRecord::Base.respond_to?(:raise_in_transactional_callbacks=)
 

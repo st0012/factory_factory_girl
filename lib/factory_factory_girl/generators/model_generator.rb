@@ -2,7 +2,7 @@ require 'rails/generators'
 require "factory_girl_rails"
 require 'generators/factory_girl/model/model_generator'
 
-module Fakery
+module FactoryFactoryGirl
   module Generators
     class ModelGenerator < FactoryGirl::Generators::ModelGenerator
       SKIPED_COLUMN = %w{id created_at updated_at}
@@ -51,7 +51,7 @@ module Fakery
       end
 
       def rules
-        @rules ||= Fakery.configuration.rules
+        @rules ||= FactoryFactoryGirl.configuration.rules
       end
     end
   end
