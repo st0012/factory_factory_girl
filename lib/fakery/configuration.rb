@@ -15,15 +15,15 @@ module Fakery
       @rules = []
     end
 
-    def match(rule, attribute: nil, process: nil)
-      result = if attribute
-                 "\"#{attribute}\""
-               elsif process
-                 process
+    def match(rule, value: nil, function: nil)
+      result = if value
+                 "\"#{value}\""
+               elsif function
+                 "{ #{function} }"
                else
                  raise "Need to give attribute or process"
                end
-      rules << { rule: rule, result: %Q("#{result}") }
+      rules << { rule: rule, result: %Q(#{result}) }
     end
   end
 end

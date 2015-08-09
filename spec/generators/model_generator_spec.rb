@@ -41,8 +41,8 @@ describe ModelGenerator, type: :generator do
     describe "generates factory with configuration" do
       before do
         Fakery.configure do |f|
-          f.match(/title/, attribute: "This is title")
-          f.match(/content/, process: "[a..z].sample")
+          f.match(/title/, value: "This is title")
+          f.match(/content/, function: "[a..z].sample")
         end
       end
       it "sets custom attribute" do
