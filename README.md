@@ -11,11 +11,11 @@ So the mission of this gem is helping people generate their factory more quikly,
 ```ruby
 FactoryFactoryGirl.configure do |config|
   config.match(/name|title/, function: "FFaker::Job.title")
-  config.match(/content|descripton/, function "FFaker::Lorem.paragraph")
+  config.match(/content|descripton/, function: "FFaker::Lorem.paragraph")
 end
 ```
 
-And then type:
+And type:
 
 ```
 $ rails g factory_factory_girl:model post
@@ -25,7 +25,7 @@ $ rails g factory_factory_girl:model post
 $ rails g factory_factory_girl:model job
 ```
 
-You will see
+Then you will see you factory file have some pre-defined value.
 
 ```ruby
 FactoryGirl.define do
@@ -35,6 +35,8 @@ FactoryGirl.define do
   .......
 end
 ```
+
+I think this is great because the rule you defined here, can be use in any other projects, and you won't need to copy & paste the setting of those frequently seen column's.
 
 
 ## Installation
@@ -55,7 +57,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Set your generation rule in `test/test_helper` or `spec/spec_helper` like
+
+```ruby
+FactoryFactoryGirl.configure do |config|
+  config.match(/name|title/, function: "FFaker::Job.title")
+  config.match(/content|descripton/, function: "FFaker::Lorem.paragraph")
+end
+```
+
+And run 
+
+```
+$ rails g factory_factory_girl:model YOUR_MODEL
+```
+
+
 
 ## Development
 
