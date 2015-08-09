@@ -4,7 +4,6 @@ require 'factory_girl_rails'
 module Fakery
   module Generators
     class ModelGenerator < Rails::Generators::NamedBase #:nodoc:
-
       SKIPED_COLUMN = %w{id created_at updated_at}
       def self.source_root
         @_factory_girl_source_root ||= File.expand_path(File.join(File.dirname(__FILE__), 'factory_girl', generator_name, 'templates'))
@@ -81,7 +80,7 @@ RUBY
       def factory_attributes
         class_name.constantize.columns.map do |attribute|
           unless SKIPED_COLUMN.include? attribute.name
-            "#{attribute.name} #{attribute_default(attribute)}"
+            "#{attribute.name} #{default_value(attribute)}"
           end
         end.compact.join("\n")
       end
@@ -107,7 +106,7 @@ RUBY
         config.respond_to?(:app_generators) ? config.app_generators : config.generators
       end
 
-      def attribute_default(attribute)
+      def default_value(attribute)
         if attribute.default
           attribute.default
         else
@@ -122,6 +121,8 @@ RUBY
             true
           when "datetime"
             "\"#{Time.now}\""
+          else
+            nil
           end
         end
       end
