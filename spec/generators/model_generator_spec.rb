@@ -4,18 +4,23 @@ ModelGenerator = Fakery::Generators::ModelGenerator
 
 describe ModelGenerator, type: :generator do
   destination File.expand_path("../../../../tmp", __FILE__)
+
   subject do
     ModelGenerator.new(["Post"], dir: destination_root + "/spec/factories")
   end
 
+  before do
+    Fakery.configure {}
+  end
 
   describe "#create_fixture_file" do
     before do
       prepare_destination
-      subject.create_fixture_file
     end
 
     it "creates file in right directory" do
+      subject.create_fixture_file
+
       expect(destination_root).to have_structure {
         directory "spec" do
           directory "factories" do
@@ -31,6 +36,34 @@ describe ModelGenerator, type: :generator do
           end
         end
       }
+    end
+
+    describe "generates factory with configuration" do
+      before do
+        Fakery.configure do |f|
+          f.match(/title/, value: "This is title")
+          f.match(/content/, function: "[a..z].sample")
+        end
+      end
+      it "sets custom attribute" do
+        subject.create_fixture_file
+
+        expect(destination_root).to have_structure {
+          directory "spec" do
+            directory "factories" do
+              file "posts.rb" do
+                contains "FactoryGirl.define"
+                contains "title \"This is title\""
+                contains "user_id 1"
+                contains "is_published true"
+                contains "view_count 1"
+                contains "description \"MyText\""
+                contains "content { [a..z].sample }"
+              end
+            end
+          end
+        }
+      end
     end
   end
 
