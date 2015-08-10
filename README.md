@@ -62,12 +62,13 @@ Or install it yourself as:
 
 ## Usage
 
-Set your generation rule in `test/test_helper` or `spec/spec_helper` like
+Set your generation rule in `initializers/factory_factory_girl` like
 
 ```ruby
 FactoryFactoryGirl.configure do |config|
   config.match(/name|title/, function: "FFaker::Job.title")
   config.match(/content|descripton/, function: "FFaker::Lorem.paragraph")
+  config.match(/id/, value: "10")
 end
 ```
 
@@ -77,7 +78,11 @@ And run
 $ rails g factory_factory_girl:model YOUR_MODEL
 ```
 
+Notice that the default directory is `test/factories` (this is inherit from `factory_girl_rails`), so if you put your factories somewhere else, you need to specify it like
 
+```
+$ rails g factory_factory_girl:model YOUR_MODEL --dir=spec/factories
+```
 
 ## Development
 
