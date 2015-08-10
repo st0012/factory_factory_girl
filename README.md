@@ -3,6 +3,8 @@
 
 # FactoryFactoryGirl
 
+## Notice!!! This gem is still under development, it's very buggy!!!!! 
+
 ## Mission
 
 FactoryGirl is a very useful gem, which lets us generate test data more efficiently. However, if you start new projects very frequently, you will feel painful writing every project's factory, especially when most of them have some common attributes.
