@@ -10,7 +10,7 @@ module FactoryFactoryGirl
       require "./test/test_helper"
     end
   rescue LoadError
-    raise "Can not load configuration"
+    raise "Can't load configuration"
   end
 
   def self.configure
