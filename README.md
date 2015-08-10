@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/st0012/factory_factory_girl.svg?branch=master)](https://travis-ci.org/st0012/factory_factory_girl)
+[![Code Climate](https://codeclimate.com/github/st0012/factory_factory_girl/badges/gpa.svg)](https://codeclimate.com/github/st0012/factory_factory_girl)
 
 # FactoryFactoryGirl
 
