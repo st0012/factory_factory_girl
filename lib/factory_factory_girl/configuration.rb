@@ -4,7 +4,7 @@ module FactoryFactoryGirl
   end
 
   def self.load_configuration(path)
-    if path.match /spec\//
+    if path.match(/spec\//)
       require "./spec/spec_helper"
     else
       require "./test/test_helper"
@@ -26,14 +26,13 @@ module FactoryFactoryGirl
     end
 
     def match(rule, value: nil, function: nil)
-      result = if value
-                 "\"#{value}\""
-               elsif function
-                 "{ #{function} }"
-               else
-                 raise "Need to give attribute or process"
-               end
-      rules << { rule: rule, result: %Q(#{result}) }
+      raise "Need to give attribute or process" if                 value.nil? && function.nil?
+
+      if value
+        rules << { rule: rule, value: value }
+      else
+        rules << { rule: rule, function: function }
+      end
     end
   end
 end

@@ -43,6 +43,7 @@ describe ModelGenerator, type: :generator do
         FactoryFactoryGirl.configure do |f|
           f.match(/title/, value: "This is title")
           f.match(/content/, function: "[a..z].sample")
+          f.match(/id/, value: 10)
         end
       end
       it "sets custom attribute" do
@@ -54,7 +55,7 @@ describe ModelGenerator, type: :generator do
               file "posts.rb" do
                 contains "FactoryGirl.define"
                 contains "title \"This is title\""
-                contains "user_id 1"
+                contains "user_id 10"
                 contains "is_published true"
                 contains "view_count 1"
                 contains "description \"MyText\""
