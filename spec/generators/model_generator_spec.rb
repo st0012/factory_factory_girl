@@ -10,7 +10,9 @@ describe ModelGenerator, type: :generator do
   end
 
   before do
-    FactoryFactoryGirl.configure {}
+    FactoryFactoryGirl.configure do |config|
+      config.rails_options = { test_framework: :rspec }
+    end
   end
 
   describe "#create_fixture_file" do
