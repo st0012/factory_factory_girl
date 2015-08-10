@@ -71,7 +71,6 @@ module FactoryFactoryGirl
         if @rules
           @rules
         else
-          FactoryFactoryGirl.load_configuration
           FactoryFactoryGirl.configuration.rules
         end
       end
