@@ -45,8 +45,6 @@ I think this gem could be helpful, but also needs a lot work. So if you find any
 
 ## Installation
 
-**Don't use versions below 0.1.5**
-
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -98,7 +96,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 - Commit your changes (git commit -am 'Add some feature')
 - Push to the branch (git push origin my-new-feature)
 - Create a new Pull Request
-- 
 
 ## Wanted contribution topic
 
