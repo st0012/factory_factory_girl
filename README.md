@@ -5,32 +5,31 @@
 
 ## Mission
 
-FactoryGirl is a very useful gem, which lets us generate test data more efficiently. However, if you start new projects very frequently, you will feel painful writing every project's factory, especially when most of them have some common attributes.
+[FactoryGirl](https://github.com/thoughtbot/factory_girl/) is a very useful gem, which lets us generate test data more efficiently. However, if you start new projects very frequently, you will feel painful writing every project's factory, especially when most of them have some common attributes.
 
-For example, you use `FFaker::Job.title` to generate all your `name` or `title`'s value, and use `FFaker::Lorem.paragraph` to generate the `description` or `content`'s value. Then you just need to cope & paste those methods in serveral columns, in serveral model's factories, or even in serveral project's factories.
+For example, you use `FFaker::Job.title` to generate all your `name` or `title`'s value, and use `FFaker::Lorem.paragraph` to generate `description` or `content`'s value. Then you just need to cope & paste those methods to serveral columns in serveral factories, or even in serveral project's factories.
 
-So the mission of this gem is helping people generate their factory more quikly, with some pre-defined rules like:
+So I created [FactoryFactoryGirl](https://github.com/st0012/factory_factory_girl). The mission of this gem is helping people generate their factory more quickly, with some pre-defined rules like:
 
-```ruby
+```
 FactoryFactoryGirl.configure do |config|
   config.match(/name|title/, function: "FFaker::Job.title")
   config.match(/content|descripton/, function: "FFaker::Lorem.paragraph")
 end
 ```
-
 And type:
 
 ```
 $ rails g factory_factory_girl:model post
-
-# or 
-
+```
+or 
+```
 $ rails g factory_factory_girl:model job
 ```
 
 Then you will see you factory file have some pre-defined value.
 
-```ruby
+```
 FactoryGirl.define do
   ........
   name { FFaker::Job.title }
@@ -39,15 +38,19 @@ FactoryGirl.define do
 end
 ```
 
-I think this is great because the rule you defined here, can be use in any other projects, and you won't need to copy & paste the setting of those frequently seen column's.
+And the rule you defined in this project, can be use in any other projects. You won't need to copy & paste the setting of those frequently seen column's.
+
+I think this gem could be helpful, but also needs a lot work. So if you find any bug or want any feature, please open an issue or email me , thanks 😄.
 
 
 ## Installation
 
+**Don't use versions below 0.1.5**
+
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'factory_factory_girl', ">= 0.1.5"
+gem 'factory_factory_girl'
 ```
 
 And then execute:
@@ -90,5 +93,15 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/factory_factory_girl.
+- [Fork it](https://github.com/st0012/factory_factory_girl/fork)
+- Create your feature branch (git checkout -b my-new-feature)
+- Commit your changes (git commit -am 'Add some feature')
+- Push to the branch (git push origin my-new-feature)
+- Create a new Pull Request
+- 
 
+## Wanted contribution topic
+
+- More specs
+- New feature
+- Bug report/fix
