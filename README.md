@@ -47,7 +47,7 @@ I think this is great because the rule you defined here, can be use in any other
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'factory_factory_girl'
+gem 'factory_factory_girl', ">= 0.1.5"
 ```
 
 And then execute:
