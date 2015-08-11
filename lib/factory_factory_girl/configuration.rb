@@ -1,28 +1,19 @@
 module FactoryFactoryGirl
   class << self
     attr_accessor :configuration
-  end
 
-  def self.load_configuration(path)
-    if path.match(/spec\//)
-      require "./spec/spec_helper"
-    else
-      require "./test/test_helper"
+    def configure
+      self.configuration ||= Configuration.new
+      yield(configuration) if block_given?
     end
-  rescue LoadError
-    raise "Can't load configuration"
-  end
-
-  def self.configure
-    self.configuration ||= Configuration.new
-    yield(configuration) if block_given?
   end
 
   class Configuration
-    attr_accessor :rules
+    attr_accessor :rules, :rails_options
 
     def initialize
       @rules = []
+      @rails_options = {}
     end
 
     def match(rule, value: nil, function: nil)

@@ -71,11 +71,8 @@ module FactoryFactoryGirl
         if @rules
           @rules
         else
-          FactoryFactoryGirl.load_configuration(options[:dir])
           FactoryFactoryGirl.configuration.rules
         end
-      rescue NoMethodError
-        raise "You need to set generation rules"
       end
     end
   end

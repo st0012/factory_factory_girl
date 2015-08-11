@@ -2,6 +2,7 @@ require "rails/generators"
 
 require "factory_factory_girl/version"
 require "factory_factory_girl/configuration"
+require "factory_factory_girl/railtie"
 require "factory_factory_girl/generators/model_generator"
 
 module FactoryFactoryGirl
