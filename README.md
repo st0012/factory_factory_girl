@@ -3,8 +3,6 @@
 
 # FactoryFactoryGirl
 
-## Notice!!! This gem is still under development, it's very buggy!!!!! 
-
 ## Mission
 
 FactoryGirl is a very useful gem, which lets us generate test data more efficiently. However, if you start new projects very frequently, you will feel painful writing every project's factory, especially when most of them have some common attributes.
@@ -78,7 +76,7 @@ And run
 $ rails g factory_factory_girl:model YOUR_MODEL
 ```
 
-Notice that the default directory is `test/factories` (this is inherit from `factory_girl_rails`), so if you put your factories somewhere else, you need to specify it like
+**Notice that the default directory is `test/factories`** (this is inherit from `factory_girl_rails`), so if you put your factories somewhere else, you need to specify it like
 
 ```
 $ rails g factory_factory_girl:model YOUR_MODEL --dir=spec/factories
