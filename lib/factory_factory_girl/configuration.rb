@@ -3,10 +3,8 @@ module FactoryFactoryGirl
     attr_accessor :configuration
 
     def configure
-      if ENV["RAILS_ENV"] != "production"
-        self.configuration ||= Configuration.new
-        yield(configuration) if block_given?
-      end
+      self.configuration ||= Configuration.new
+      yield(configuration) if block_given?
     end
   end
 

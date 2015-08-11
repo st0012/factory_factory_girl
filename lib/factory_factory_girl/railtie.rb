@@ -8,10 +8,10 @@ module FactoryGirl
     initializer "factory_factory_girl.get_test_framework" do
       FactoryFactoryGirl.configure do |c|
         c.rails_options = if config.respond_to?(:app_generators)
-                         config.app_generators.options[:rails]
-                       else
-                         config.generators.options[:rails]
-                       end
+                            config.app_generators.options[:rails]
+                          else
+                            config.generators.options[:rails]
+                          end
       end
     end
   end
