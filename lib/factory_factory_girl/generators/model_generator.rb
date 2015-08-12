@@ -14,7 +14,7 @@ module FactoryFactoryGirl
           unless SKIPED_COLUMN.include? attribute.name
             "#{attribute.name} #{set_column(attribute)}"
           end
-        end.compact.join("\n")
+        end.compact.join("\n    ")
       end
 
       def set_column(attribute)
