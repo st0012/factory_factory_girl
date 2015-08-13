@@ -5,9 +5,9 @@
 
 ## Mission
 
-[FactoryGirl](https://github.com/thoughtbot/factory_girl/) is a very useful gem, which lets us generate test data more efficiently. However, if you start new projects very frequently, you will feel painful writing every project's factory, especially when most of them have some common attributes.
+[FactoryGirl](https://github.com/thoughtbot/factory_girl/) is a really useful gem that lets us generate test data more efficiently. However, if you start with new projects very frequently, you will feel painful to write project's attributes, especially when most of them have some common attributes.
 
-For example, you use `FFaker::Job.title` to generate all your `name` or `title`'s value, and use `FFaker::Lorem.paragraph` to generate `description` or `content`'s value. Then you just need to cope & paste those methods to serveral columns in serveral factories, or even in serveral project's factories.
+For example, you use `FFaker::Job.title` to generate all your `name` or `title`'s value, and use `FFaker::Lorem.paragraph` to generate `description` or `content`'s value. Then you just need to copy & paste those methods to serveral columns in serveral factories, or even in serveral project's factories.
 
 So I created [FactoryFactoryGirl](https://github.com/st0012/factory_factory_girl). The mission of this gem is helping people generate their factory more quickly, with some pre-defined rules like:
 
@@ -17,7 +17,7 @@ FactoryFactoryGirl.configure do |config|
   config.match(/content|descripton/, function: "FFaker::Lorem.paragraph")
 end
 ```
-And type:
+And run:
 
 ```
 $ rails g factory_factory_girl:model post
@@ -38,9 +38,9 @@ FactoryGirl.define do
 end
 ```
 
-And the rule you defined in this project, can be use in any other projects. You won't need to copy & paste the setting of those frequently seen column's.
+And the rule you defined in this project can be used in any other projects. You won't need to copy & paste the setting of those frequently seen column's.
 
-I think this gem could be helpful, but also needs a lot work. So if you find any bug or want any feature, please open an issue or email me , thanks 😄.
+I think this gem could be helpful, but also needs a lot of work. So if you find any bugs or have some ideas of this project, please open an issue or email me, thanks. 😄
 
 
 ## Installation
