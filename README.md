@@ -5,7 +5,7 @@
 
 ## Mission
 
-[FactoryGirl](https://github.com/thoughtbot/factory_girl/) is a really useful gem that lets us generate test data more efficiently. However, if you start with new projects very frequently, you will feel painful to write project's attributes, especially when most of them have some common attributes.
+[FactoryGirl](https://github.com/thoughtbot/factory_girl/) is a really useful gem that lets us generate test data more efficiently. However, if you start with new projects very frequently, you will feel painful to write project's attributes, especially when most of them look commonly.
 
 For example, you use `FFaker::Job.title` to generate all your `name` or `title`'s value, and use `FFaker::Lorem.paragraph` to generate `description` or `content`'s value. Then you just need to copy & paste those methods to serveral columns in serveral factories, or even in serveral project's factories.
 
