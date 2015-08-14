@@ -18,21 +18,23 @@ module FactoryFactoryGirl
       end
 
       def set_column(attribute)
-        match_results = rules.map do |rule|
-          if attribute.name.match(rule[:rule])
-            rule
-          end
-        end.compact
+        applied_rule = get_match_results(rules, attribute).first
+        return default_value(attribute) unless applied_rule
 
-        if applied_rule = match_results.first
-          if applied_rule[:value]
-            transfer_value_type(applied_rule[:value], attribute.type.to_s)
-          else
-            "{ #{applied_rule[:function]} }"
-          end
+        if applied_rule[:value]
+          transfer_value_type(applied_rule[:value], attribute.type.to_s)
         else
-          default_value(attribute)
+          "{ #{applied_rule[:function]} }"
         end
+      end
+
+      def get_match_results(rules, attribute)
+        rules.map { |rule| rule if is_matched_rule?(rule, attribute) }.compact
+      end
+
+      def is_matched_rule?(rule, attribute)
+        return true if attribute.name.match(rule[:rule])
+        false
       end
 
       def transfer_value_type(value, type)
@@ -47,10 +49,8 @@ module FactoryFactoryGirl
       end
 
       def default_value(attribute)
-        if attribute.default
-          attribute.default
-        else
-          case attribute.type.to_s
+        return attribute.default if attribute.default
+        case attribute.type.to_s
           when "string"
             "\"MyString\""
           when "integer"
@@ -63,16 +63,12 @@ module FactoryFactoryGirl
             "\"#{Time.now}\""
           else
             nil
-          end
         end
       end
 
       def rules
-        if @rules
-          @rules
-        else
-          FactoryFactoryGirl.configuration.rules
-        end
+        return @rules if @rules
+        FactoryFactoryGirl.configuration.rules
       end
     end
   end
