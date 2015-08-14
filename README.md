@@ -15,6 +15,7 @@ So I created [FactoryFactoryGirl](https://github.com/st0012/factory_factory_girl
 FactoryFactoryGirl.configure do |config|
   config.match(/name|title/, function: "FFaker::Job.title")
   config.match(/content|descripton/, function: "FFaker::Lorem.paragraph")
+  config.match(/country|region/, value: "Taiwan")
 end
 ```
 And run:
@@ -34,13 +35,14 @@ FactoryGirl.define do
   ........
   name { FFaker::Job.title }
   content { FFaker::Lorem.paragraph }
+  country "Taiwan"
   .......
 end
 ```
 
-And the rule you defined in this project can be used in any other projects. You won't need to copy & paste the setting of those frequently seen column's.
+And the rule you defined in this project, can be used in any other projects. You won't need to copy & paste the setting of those frequently seen column's.
 
-I think this gem could be helpful, but also needs a lot of work. So if you find any bugs or have some ideas of this project, please open an issue or email me, thanks. 😄
+I think this gem could be helpful, but also needs a lot of work. So if you find any bug or want any new feature, please open an issue or email me , thanks 😄.
 
 
 ## Installation
