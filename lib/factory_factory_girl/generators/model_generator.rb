@@ -20,12 +20,8 @@ module FactoryFactoryGirl
       def set_column(attribute)
         applied_rule = get_match_results(rules, attribute).first
         return default_value(attribute) unless applied_rule
-
-        if applied_rule[:value]
-          transfer_value_type(applied_rule[:value], attribute.type.to_s)
-        else
-          "{ #{applied_rule[:function]} }"
-        end
+        return "{ #{applied_rule[:function]} }" unless applied_rule[:value]
+        transfer_value_type(applied_rule[:value], attribute.type.to_s)
       end
 
       def get_match_results(rules, attribute)
