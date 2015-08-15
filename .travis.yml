@@ -4,3 +4,6 @@ cache: bundler
 rvm:
   - 2.2.0
 before_install: gem install bundler -v 1.10.6
+
+env:
+  - CODECLIMATE_REPO_TOKEN=a4bd4a771867fdd972aecf09a1888009a0733391c844cd94991aed1d1257bf56
