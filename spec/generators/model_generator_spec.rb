@@ -89,7 +89,7 @@ describe ModelGenerator, type: :generator do
       end
 
       it "returns \"MyString\" when type is string" do
-        allow(attribute).to receive_message_chain(:type, :to_s).and_return("string")
+        allow(attribute).to receive_message_chain(:type).and_return(:string)
 
         result = subject.send(:default_value, attribute)
 
@@ -97,7 +97,7 @@ describe ModelGenerator, type: :generator do
       end
 
       it "returns \"MyText\" when type is text" do
-        allow(attribute).to receive_message_chain(:type, :to_s).and_return("text")
+        allow(attribute).to receive_message_chain(:type).and_return(:text)
 
         result = subject.send(:default_value, attribute)
 
@@ -105,15 +105,23 @@ describe ModelGenerator, type: :generator do
       end
 
       it "returns 1 when type is integer" do
-        allow(attribute).to receive_message_chain(:type, :to_s).and_return("integer")
+        allow(attribute).to receive_message_chain(:type).and_return(:integer)
 
         result = subject.send(:default_value, attribute)
 
         expect(result).to eq(1)
       end
 
+      it "return 1.2 when type is float" do
+        allow(attribute).to receive_message_chain(:type).and_return(:float)
+
+        result = subject.send(:default_value, attribute)
+
+        expect(result).to eq(1.2)
+      end
+
       it "returns datetime when type is datetime" do
-        allow(attribute).to receive_message_chain(:type, :to_s).and_return("datetime")
+        allow(attribute).to receive_message_chain(:type).and_return(:datetime)
 
         result = subject.send(:default_value, attribute)
 
@@ -121,7 +129,7 @@ describe ModelGenerator, type: :generator do
       end
 
       it "returns nil when type is not yet defined" do
-        allow(attribute).to receive_message_chain(:type, :to_s).and_return("hstore")
+        allow(attribute).to receive_message_chain(:type).and_return(:hstore)
 
         result = subject.send(:default_value, attribute)
 

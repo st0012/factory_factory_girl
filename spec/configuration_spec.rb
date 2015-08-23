@@ -9,8 +9,8 @@ describe FactoryFactoryGirl::Configuration do
 
       expect(subject.rules).to match_array(
         [
-          { rule: /name/, value: "String" },
-          { rule: /content/, value: "Text" }
+          { attributes: /name/, value: "String" },
+          { attributes: /content/, value: "Text" }
         ]
       )
     end
