@@ -16,13 +16,13 @@ module FactoryFactoryGirl
       @rails_options = {}
     end
 
-    def match(rule, value: nil, function: nil)
-      raise "Need to give attribute or process" if                 value.nil? && function.nil?
+    def match(attributes, value: nil, function: nil)
+      raise "Need to give attribute or process" if value.nil? && function.nil?
 
       if value
-        rules << { rule: rule, value: value }
+        rules << { attributes: attributes, value: value }
       else
-        rules << { rule: rule, function: function }
+        rules << { attributes: attributes, function: function }
       end
     end
   end
