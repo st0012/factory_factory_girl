@@ -41,6 +41,8 @@ module FactoryFactoryGirl
           "\"#{value}\""
         when :integer
           value.to_i
+        when :float
+          value.to_f
         else
           value
         end
@@ -57,6 +59,8 @@ module FactoryFactoryGirl
             "\"MyText\""
           when :integer
             1
+          when :float
+            1.2
           when :boolean
             true
           when :datetime
