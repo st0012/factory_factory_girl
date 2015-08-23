@@ -19,7 +19,7 @@ module FactoryFactoryGirl
 
       def set_column(attribute)
         match_results = rules.map do |rule|
-          if attribute.name.match(rule[:attributes])
+          if attribute.name.match(rule[:pattern])
             rule
           end
         end.compact
