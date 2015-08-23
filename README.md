@@ -70,7 +70,6 @@ Set your generation rule in `initializers/factory_factory_girl` like
 FactoryFactoryGirl.configure do |config|
   config.match(/name|title/, function: "FFaker::Job.title")
   config.match(/content|descripton/, function: "FFaker::Lorem.paragraph")
-  config.match(/id/, value: "10")
 end
 ```
 
