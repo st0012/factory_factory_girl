@@ -19,14 +19,14 @@ module FactoryFactoryGirl
 
       def set_column(attribute)
         match_results = rules.map do |rule|
-          if attribute.name.match(rule[:rule])
+          if attribute.name.match(rule[:pattern])
             rule
           end
         end.compact
 
         if applied_rule = match_results.first
           if applied_rule[:value]
-            transfer_value_type(applied_rule[:value], attribute.type.to_s)
+            transfer_value_type(applied_rule[:value], attribute.type)
           else
             "{ #{applied_rule[:function]} }"
           end
@@ -37,10 +37,12 @@ module FactoryFactoryGirl
 
       def transfer_value_type(value, type)
         case type
-        when "string" || "text"
+        when :string || :text
           "\"#{value}\""
-        when "integer"
+        when :integer
           value.to_i
+        when :float
+          value.to_f
         else
           value
         end
@@ -50,16 +52,18 @@ module FactoryFactoryGirl
         if attribute.default
           attribute.default
         else
-          case attribute.type.to_s
-          when "string"
+          case attribute.type
+          when :string
             "\"MyString\""
-          when "integer"
-            1
-          when "text"
+          when :text
             "\"MyText\""
-          when "boolean"
+          when :integer
+            1
+          when :float
+            1.2
+          when :boolean
             true
-          when "datetime"
+          when :datetime
             "\"#{Time.now}\""
           else
             nil
