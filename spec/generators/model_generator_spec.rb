@@ -70,7 +70,26 @@ describe ModelGenerator, type: :generator do
     end
   end
 
-  describe "#attirubte_default" do
+  describe "#transfer_value_type" do
+    it "returns string value when type is string" do
+      result = subject.send(:transfer_value_type, "test", :string)
+      expect(result).to eq("\"test\"")
+    end
+    it "returns string value when type is text" do
+      result = subject.send(:transfer_value_type, "test", :text)
+      expect(result).to eq("\"test\"")
+    end
+    it "returns integer value when type is integer" do
+      result = subject.send(:transfer_value_type, "1", :integer)
+      expect(result).to eq(1)
+    end
+    it "returns float value when type is decimal" do
+      result = subject.send(:transfer_value_type, "1.0", :decimal)
+      expect(result).to eq(1.0)
+    end
+  end
+
+  describe "#default_value" do
     let(:attribute) { double(:attribute) }
 
     context "Attribute has default value" do

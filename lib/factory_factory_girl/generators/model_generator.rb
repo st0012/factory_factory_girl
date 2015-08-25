@@ -37,11 +37,13 @@ module FactoryFactoryGirl
 
       def transfer_value_type(value, type)
         case type
-        when :string || :text
+        when :string
+          "\"#{value}\""
+        when :text
           "\"#{value}\""
         when :integer
           value.to_i
-        when :float
+        when :decimal
           value.to_f
         else
           value
